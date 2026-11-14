@@ -26,7 +26,6 @@ const allowedOrigins = [
     'http://localhost:3002', 'http://127.0.0.1:3002',
     'http://localhost:5173', 'http://127.0.0.1:5173',
     'http://localhost:5000', 'https://lostkart.onrender.com',
-    'https://lostkart-3aexz7iax-himanshurao63.vercel.app/',
     'https://yourdomain.com'
 ];
 
@@ -34,14 +33,26 @@ app.use(cors({
     origin: function (origin, callback) {
         // Allow requests with no origin (file://, curl, mobile apps)
         if (!origin) return callback(null, true);
+
+        // 1. Check if it's in the allowed list (localhost, render)
         if (allowedOrigins.indexOf(origin) !== -1) {
             return callback(null, true);
         }
+
+        // 2. Allow any Vercel deployment (both preview and production)
+        if (origin.endsWith('.vercel.app')) {
+            return callback(null, true);
+        }
+
         console.warn('CORS blocked origin:', origin);
         callback(new Error('Not allowed by CORS'));
     },
-    credentials: true
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'], // Explicitly allow methods
+    allowedHeaders: ['Content-Type', 'Authorization'] // Explicitly allow headers
 }));// Allows frontend to talk to backend
+// Handle preflight requests for all routes
+app.options('*', cors());
 app.use(express.json()); // Allows server to read JSON
 app.use(express.urlencoded({ extended: true })); // Allows server to read FormData (images)
 
