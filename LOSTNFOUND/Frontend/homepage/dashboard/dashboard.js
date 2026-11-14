@@ -30,7 +30,7 @@ async function loadReports() {
             return;
         }
 
-        const response = await fetch("http://localhost:5000/api/items/my-reports", {
+        const response = await fetch("https://lostkart.onrender.com/api/items/my-reports", {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,

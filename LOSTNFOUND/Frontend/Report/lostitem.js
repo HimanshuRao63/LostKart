@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log("4. Sending request to backend...");
                 
                 // Fetch request to your backend endpoint
-                const response = await fetch('http://localhost:5000/api/items/lost', {
+                const response = await fetch('https://lostkart.onrender.com/api/items/lost', {
                     method: 'POST',
                     headers: {
                         'Authorization': `Bearer ${token}`

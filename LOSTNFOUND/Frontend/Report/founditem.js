@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log("4. Sending request to backend...");
                 
                 // Notice the endpoint ends in /found instead of /lost
-                const response = await fetch('http://localhost:5000/api/items/found', {
+                const response = await fetch('https://lostkart.onrender.com/api/items/found', {
                     method: 'POST',
                     headers: {
                         'Authorization': `Bearer ${token}`

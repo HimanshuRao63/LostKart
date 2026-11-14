@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const backHomeBtn = document.getElementById("backHomeBtn");
     const saveBtn = profileForm.querySelector(".save-btn");
 
-    const API_URL = "http://localhost:5000/api/user/profile";
+    const API_URL = "https://lostkart.onrender.com/api/user/profile";
     const fieldIds = ["name", "email", "mobile", "rollno", "course"];
     let originalValues = {};
 

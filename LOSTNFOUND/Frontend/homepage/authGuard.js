@@ -65,7 +65,7 @@
     }
 
     // 4. Verify the token with your backend (server.js -> token.js)
-    fetch("http://localhost:5000/api/auth/verify", {
+    fetch("https://lostkart.onrender.com/api/auth/verify", {
         method: "GET",
         headers: {
             "Authorization": "Bearer " + token,
@@ -95,7 +95,7 @@
     }
     if (event.persisted) {
         // Re-verify on bfcache restore
-        fetch("http://localhost:5000/api/auth/verify", {
+        fetch("https://lostkart.onrender.com/api/auth/verify", {
             headers: { "Authorization": "Bearer " + getJwtToken() }
         }).then(r => { if (!r.ok) redirectToLogin(); });
     }

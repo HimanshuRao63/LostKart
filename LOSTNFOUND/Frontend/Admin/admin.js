@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:5000/api/admin';
+const API_BASE = 'https://lostkart.onrender.com/api/admin';
 
 function getAuthToken() {
     return localStorage.getItem('token') || '';

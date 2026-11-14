@@ -215,7 +215,7 @@ async function submitClaimForm(e) {
     }
 
     try {
-        const res = await fetch(`http://localhost:5000/api/items/${itemId}/claim`, {
+        const res = await fetch(`https://lostkart.onrender.com/api/items/${itemId}/claim`, {
             method: 'POST',
             headers: {
                 // Do NOT set 'Content-Type' here; browser sets multipart boundaries automatically
