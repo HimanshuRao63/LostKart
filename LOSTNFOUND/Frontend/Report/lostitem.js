@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (backHomeBtn) {
         backHomeBtn.addEventListener("click", function () {
 
-            window.location.href = "../homepage/INDEX.html";
+            window.location.href = "../homepage/index.html";
 
         });
     }

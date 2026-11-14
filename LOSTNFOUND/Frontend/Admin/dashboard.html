@@ -12,7 +12,7 @@
                 const payload = JSON.parse(atob(token.split('.')[1]));
                 if (payload.role !== 'admin') {
                     alert('Access denied. Administrator account required.');
-                    window.location.replace('../homepage/INDEX.html');
+                    window.location.replace('../homepage/index.html');
                 }
             } catch (e) { console.warn('Token decode failed:', e); }
         })();
@@ -68,7 +68,7 @@
         <div class="d-flex align-items-center gap-3">
             <a href="../Inventory/inventory.html" target="_blank" class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-eye"></i> View Site</a>
             <button class="theme-toggle" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></button>
-            <button class="back-home-btn" onclick="window.location.replace('../homepage/INDEX.html')" title="Back to Home"><i class="fa-solid fa-house"></i></button>
+            <button class="back-home-btn" onclick="window.location.replace('../homepage/index.html')" title="Back to Home"><i class="fa-solid fa-house"></i></button>
         </div>
     </nav>
 

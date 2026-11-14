@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem("lostkartUser", JSON.stringify(data.user));
 
                     // Redirect to the homepage
-                    window.location.href = "../homepage/INDEX.html";
+                    window.location.href = "../homepage/index.html";
                 } else {
                     showToast(data.message || "Login failed ❌", "error");
                 }

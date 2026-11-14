@@ -335,7 +335,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // 5. Back to Home Button
     if (backHomeBtn) {
         backHomeBtn.addEventListener("click", function () {
-            window.location.href = "../INDEX.html";
+            window.location.href = "../index.html";
         });
     }
 
