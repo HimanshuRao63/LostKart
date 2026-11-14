@@ -1,5 +1,12 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/login/login.html",
+      "destination": "/login/login.html"
+    },
+    {
+      "source": "/homepage",
+      "destination": "/homepage/index.html"
+    }
   ]
 }
