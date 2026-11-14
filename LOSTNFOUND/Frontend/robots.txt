@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block Google from trying to index private user pages
+Disallow: /Frontend/homepage/dashboard/
+Disallow: /Frontend/homepage/update%20profile/
+Disallow: /Frontend/Admin/
+
+# Point Google to your sitemap
+Sitemap: https://www.lostkart.in/sitemap.xml

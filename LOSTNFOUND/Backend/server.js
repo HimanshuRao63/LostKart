@@ -196,6 +196,27 @@ app.get("/", function (req, res) {
 });
 
 // ==========================================
+// ERROR HANDLING MIDDLEWARE (Backend)
+// ==========================================
+
+// 404 Handler - For unmatched API routes
+app.use((req, res, next) => {
+    res.status(404).json({
+        success: false,
+        message: "API Route Not Found. Please check the URL."
+    });
+});
+
+// 500 Handler - For server crashes/errors
+app.use((err, req, res, next) => {
+    console.error('[SERVER ERROR]', err.stack);
+    res.status(500).json({
+        success: false,
+        message: "Internal Server Error. Something went wrong on our end."
+    });
+});
+
+// ==========================================
 // 6. START SERVER ON PORT 5000
 // ==========================================
 const PORT = process.env.PORT || 5000;

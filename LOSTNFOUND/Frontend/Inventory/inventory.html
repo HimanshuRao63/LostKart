@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
+
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-T2D62RFK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+    </script>
+
+
     <script src="../homepage/js/theme.js"></script>
     <script src="../homepage/js/toast.js" defer></script>
     <meta charset="UTF-8">
@@ -12,26 +23,40 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T2D62K"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div class="lost-page">
-        
+
         <!-- Buttons inside the container -->
         <div class="page-controls" style="padding: 20px 20px 0 20px; margin-bottom: 0;">
-            <button type="button" id="backHomeBtn" class="back-home-btn" onclick="window.location.href='../homepage/index.html'">&lt;</button>
+            <button type="button" id="backHomeBtn" class="back-home-btn"
+                onclick="window.location.href='../homepage/index.html'">&lt;</button>
             <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">
                 <i class="fa-solid fa-moon"></i>
             </button>
         </div>
 
-        <header class="page-header"><h1>INVENTORY</h1></header>
+        <header class="page-header">
+            <h1>INVENTORY</h1>
+        </header>
 
         <nav class="category-bar">
-            <button class="cat-btn active" onclick="filterByCategory('all', this)"><i class="fa-solid fa-shapes"></i> All</button>
-            <button class="cat-btn" onclick="filterByCategory('electronics', this)"><i class="fa-solid fa-mobile-screen-button"></i> Electronics</button>
-            <button class="cat-btn" onclick="filterByCategory('accessories', this)"><i class="fa-solid fa-wallet"></i> Accessories</button>
-            <button class="cat-btn" onclick="filterByCategory('documents', this)"><i class="fa-solid fa-file"></i> Documents</button>
-            <button class="cat-btn" onclick="filterByCategory('stationary', this)"><i class="fa-solid fa-pen-ruler"></i> Stationery</button>
-            <button class="cat-btn" onclick="filterByCategory('other', this)"><i class="fa-solid fa-folder-open"></i> Other</button>
+            <button class="cat-btn active" onclick="filterByCategory('all', this)"><i class="fa-solid fa-shapes"></i>
+                All</button>
+            <button class="cat-btn" onclick="filterByCategory('electronics', this)"><i
+                    class="fa-solid fa-mobile-screen-button"></i> Electronics</button>
+            <button class="cat-btn" onclick="filterByCategory('accessories', this)"><i class="fa-solid fa-wallet"></i>
+                Accessories</button>
+            <button class="cat-btn" onclick="filterByCategory('documents', this)"><i class="fa-solid fa-file"></i>
+                Documents</button>
+            <button class="cat-btn" onclick="filterByCategory('stationary', this)"><i class="fa-solid fa-pen-ruler"></i>
+                Stationery</button>
+            <button class="cat-btn" onclick="filterByCategory('other', this)"><i class="fa-solid fa-folder-open"></i>
+                Other</button>
         </nav>
 
         <div class="sort-bar">
@@ -48,12 +73,18 @@
             <button class="modal-close-btn" onclick="closeItemModal()"><i class="fa-solid fa-xmark"></i></button>
             <div class="modal-image-wrapper"><img id="modalItemImage" src="" alt="Item photo"></div>
             <div class="modal-body">
-                <div class="modal-header-meta"><span class="modal-badge" id="modalItemType">Found</span><h2 id="modalItemName">Item Name</h2></div>
+                <div class="modal-header-meta"><span class="modal-badge" id="modalItemType">Found</span>
+                    <h2 id="modalItemName">Item Name</h2>
+                </div>
                 <div class="modal-details-grid">
-                    <div class="detail-field"><span class="detail-label">Category</span><span class="detail-value" id="modalItemCategory">-</span></div>
-                    <div class="detail-field"><span class="detail-label">Location</span><span class="detail-value" id="modalItemLocation">-</span></div>
-                    <div class="detail-field"><span class="detail-label">Reported On</span><span class="detail-value" id="modalItemDate">-</span></div>
-                    <div class="detail-field"><span class="detail-label">Colour</span><span class="detail-value" id="modalItemColour">-</span></div>
+                    <div class="detail-field"><span class="detail-label">Category</span><span class="detail-value"
+                            id="modalItemCategory">-</span></div>
+                    <div class="detail-field"><span class="detail-label">Location</span><span class="detail-value"
+                            id="modalItemLocation">-</span></div>
+                    <div class="detail-field"><span class="detail-label">Reported On</span><span class="detail-value"
+                            id="modalItemDate">-</span></div>
+                    <div class="detail-field"><span class="detail-label">Colour</span><span class="detail-value"
+                            id="modalItemColour">-</span></div>
                 </div>
                 <div id="modalActionContainer"></div>
             </div>
@@ -64,23 +95,36 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #001f3f; color: #ffffff;">
-                    <h5 class="modal-title fs-5"><i class="fa-solid fa-shield-halved text-warning me-2"></i> Claim Ownership</h5>
+                    <h5 class="modal-title fs-5"><i class="fa-solid fa-shield-halved text-warning me-2"></i> Claim
+                        Ownership</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <form id="claimForm" onsubmit="submitClaimForm(event)">
                     <div class="modal-body p-4" style="background-color: var(--color-bg-body);">
-                        <p class="text-muted small mb-3">Provide ownership details for <strong id="modalItemNameText">this item</strong>.</p>
+                        <p class="text-muted small mb-3">Provide ownership details for <strong
+                                id="modalItemNameText">this item</strong>.</p>
                         <input type="hidden" id="claimItemId">
-                        <div class="mb-3"><label class="form-label fw-semibold small">1. Brand (Optional)</label><input type="text" class="form-control" id="claimBrand"></div>
-                        <div class="mb-3"><label class="form-label fw-semibold small">2. Unique Marks <span class="text-danger">*</span></label><input type="text" class="form-control" id="claimUniqueMarks" required></div>
-                        <div class="mb-3"><label class="form-label fw-semibold small">3. Distinctive Feature <span class="text-danger">*</span></label><input type="text" class="form-control" id="claimDistinctiveFeature" required></div>
-                        <div class="mb-3"><label class="form-label fw-semibold small">4. Content Inside</label><textarea class="form-control" id="claimContentInside" rows="2"></textarea></div>
-                        <div class="mb-3"><label class="form-label fw-semibold small">5. Additional Info</label><textarea class="form-control" id="claimAdditionalInfo" rows="2"></textarea></div>
-                        <div class="mb-2"><label class="form-label fw-semibold small">Old Photo / Receipt</label><input type="file" class="form-control form-control-sm" id="claimProofImage" accept="image/*"></div>
+                        <div class="mb-3"><label class="form-label fw-semibold small">1. Brand (Optional)</label><input
+                                type="text" class="form-control" id="claimBrand"></div>
+                        <div class="mb-3"><label class="form-label fw-semibold small">2. Unique Marks <span
+                                    class="text-danger">*</span></label><input type="text" class="form-control"
+                                id="claimUniqueMarks" required></div>
+                        <div class="mb-3"><label class="form-label fw-semibold small">3. Distinctive Feature <span
+                                    class="text-danger">*</span></label><input type="text" class="form-control"
+                                id="claimDistinctiveFeature" required></div>
+                        <div class="mb-3"><label class="form-label fw-semibold small">4. Content Inside</label><textarea
+                                class="form-control" id="claimContentInside" rows="2"></textarea></div>
+                        <div class="mb-3"><label class="form-label fw-semibold small">5. Additional
+                                Info</label><textarea class="form-control" id="claimAdditionalInfo" rows="2"></textarea>
+                        </div>
+                        <div class="mb-2"><label class="form-label fw-semibold small">Old Photo / Receipt</label><input
+                                type="file" class="form-control form-control-sm" id="claimProofImage" accept="image/*">
+                        </div>
                     </div>
                     <div class="modal-footer bg-light">
                         <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary btn-sm px-3" style="background-color: #003366;">Submit</button>
+                        <button type="submit" class="btn btn-primary btn-sm px-3"
+                            style="background-color: #003366;">Submit</button>
                     </div>
                 </form>
             </div>
@@ -88,4 +132,5 @@
     </div>
     <script src="inventory.js"></script>
 </body>
+
 </html>
