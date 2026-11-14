@@ -52,7 +52,7 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'] // Explicitly allow headers
 }));// Allows frontend to talk to backend
 // Handle preflight requests for all routes
-app.options('*', cors());
+app.options('/*splat', cors());
 app.use(express.json()); // Allows server to read JSON
 app.use(express.urlencoded({ extended: true })); // Allows server to read FormData (images)
 
