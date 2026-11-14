@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile | LO$TKART</title>
+
+    <link rel="stylesheet" href="update-profile.css">
+    <link rel="stylesheet" href="../css/theme-utils.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="../js/theme.js"></script>
+    <script src="../js/toast.js" defer></script>
+</head>
+
+<body>
+    <header class="top-header">
+        <a href="../INDEX.html" class="logo">LO$TKART</a>
+    </header>
+
+    <main class="profile-container">
+        <section class="profile-card">
+            
+            <!-- Buttons inside the card -->
+            <div class="page-controls">
+                <button type="button" id="backHomeBtn" class="back-home-btn" onclick="window.location.href='../INDEX.html'">&lt;</button>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+
+            <div class="profile-heading">
+                <h1>Update Profile</h1>
+                <p>View and update your account information.</p>
+            </div>
+
+            <div id="profileMessage" class="message" role="status" aria-live="polite"></div>
+
+            <form id="profileForm" novalidate>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" autocomplete="name" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <div class="input-wrapper">
+                        <input type="email" id="email" name="email" placeholder="Enter your email address" autocomplete="email" readonly required>
+                        <button type="button" class="edit-btn" data-edit="email" aria-label="Edit email" title="Edit email">✎</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="mobile">Mobile Number:</label>
+                    <div class="input-wrapper">
+                        <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" maxlength="10" inputmode="numeric" autocomplete="tel" readonly required>
+                        <button type="button" class="edit-btn" data-edit="mobile" aria-label="Edit mobile number" title="Edit mobile number">✎</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="rollno">Roll No:</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="rollno" name="rollno" placeholder="Enter your roll number" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="course">
+                        Course:
+                        <span class="course-hint" style="font-size: 12px; font-weight: 400;">(set at registration)</span>
+                    </label>
+                    <div class="input-wrapper">
+                        <input type="text" id="course" name="course" placeholder="Your registered course" readonly aria-readonly="true">
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="save-btn">Save Changes</button>
+                    <button type="button" id="resetbtn" class="reset-btn">Reset</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script src="update-profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+/* About Page */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+
+/* Reset */
+
+* {
+    box-sizing: border-box;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* Body */
+
+body {
+    margin: 0;
+
+    padding: 0;
+
+    background-color: #f0f4f8;
+
+    color: #444;
+}
+
+
+/* About Section */
+
+.about {
+    padding: 50px 7%;
+
+    text-align: center;
+}
+
+
+/* Main Heading */
+
+.about h1 {
+    color: #0056b3;
+
+    font-size: 30px;
+
+    margin-bottom: 10px;
+}
+
+
+/* Introduction */
+
+.intro {
+    color: #666;
+
+    font-size: 15px;
+
+    margin-bottom: 30px;
+}
+
+
+/* About Box */
+
+.about-box {
+    width: 90%;
+
+    max-width: 800px;
+
+    margin: auto;
+
+    padding: 30px;
+
+    background-color: white;
+
+    border-radius: 15px;
+
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+    text-align: left;
+}
+
+
+/* Headings */
+
+.about-box h2 {
+    color: #0056b3;
+
+    font-size: 20px;
+
+    margin-bottom: 8px;
+}
+
+
+/* Paragraph */
+
+.about-box p {
+    color: #666;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    margin-bottom: 25px;
+}
+
+
+/* List */
+
+.about-box ul {
+    color: #666;
+
+    font-size: 14px;
+
+    line-height: 2;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .about {
+        padding: 35px 5%;
+    }
+
+    .about h1 {
+        font-size: 25px;
+    }
+
+    .about-box {
+        width: 100%;
+
+        padding: 20px;
+    }
+
+}

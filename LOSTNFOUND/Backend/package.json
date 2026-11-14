@@ -1,0 +1,23 @@
+{
+  "name": "lostnfound",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Himanshu Rao, Suraj, Shubham, Ravi",
+  "type": "commonjs",
+  "main": "script.js",
+  "scripts": {
+    "test": "run dev"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.11.0",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.4",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.10.2",
+    "multer": "^2.4.0",
+    "multer-storage-cloudinary": "^4.0.0"
+  }
+}

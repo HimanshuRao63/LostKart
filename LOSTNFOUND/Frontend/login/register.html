@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Lost and Found</title>
+
+    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="../homepage/css/theme-utils.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Coiny&display=swap" rel="stylesheet">
+
+    <script src="../homepage/js/theme.js"></script>
+    <script src="../homepage/js/toast.js" defer></script>
+</head>
+
+<body>
+    <h1>LO$TKART</h1>
+    <h2>Register Now</h2>
+
+    <div class="register-card">
+
+        <!-- Toggle inside the container -->
+        <div class="page-controls" style="margin-bottom: 0;">
+            <button type="button" id="backHomeBtn" class="back-home-btn"
+                onclick="window.location.href='login.html'">&lt;</button>
+            <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+
+        <img src="../Images/logo.jpg" alt="Lost and Found Logo" class="logo">
+
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile Number:</label>
+                <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" maxlength="10"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="rollno">Roll No:</label>
+                <input type="text" id="rollno" name="rollno" placeholder="Enter your roll number" required>
+            </div>
+            <div class="form-group">
+                <label for="course">Course:</label>
+                <input type="text" id="course" name="course" placeholder="Enter your course" required>
+            </div>
+
+            <!-- ============ PASSWORD ============ -->
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <div class="password-wrap">
+                    <input type="password" id="password" name="password" placeholder="Create a strong password"
+                        minlength="8" maxlength="64" autocomplete="new-password" required>
+                    <button type="button" class="toggle-eye" data-target="password" aria-label="Show password">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
+
+                <div class="strength-meter">
+                    <div class="strength-track">
+                        <div class="strength-fill" id="strengthFill"></div>
+                    </div>
+                    <span class="strength-label" id="strengthLabel">&mdash;</span>
+                </div>
+
+                <ul class="password-rules" id="passwordRules">
+                    <li data-rule="length"><i class="fa-regular fa-circle"></i>8&ndash;64 characters</li>
+                    <li data-rule="lower"><i class="fa-regular fa-circle"></i>One lowercase letter (a&ndash;z)</li>
+                    <li data-rule="upper"><i class="fa-regular fa-circle"></i>One uppercase letter (A&ndash;Z)</li>
+                    <li data-rule="number"><i class="fa-regular fa-circle"></i>One number (0&ndash;9)</li>
+                    <li data-rule="special"><i class="fa-regular fa-circle"></i>One special character (!@#$%^&amp;*)</li>
+                    <li data-rule="space"><i class="fa-regular fa-circle"></i>No spaces</li>
+                </ul>
+            </div>
+
+            <!-- ============ CONFIRM PASSWORD ============ -->
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <div class="password-wrap">
+                    <input type="password" id="confirmPassword" name="confirmPassword"
+                        placeholder="Confirm your password" maxlength="64" autocomplete="new-password" required>
+                    <button type="button" class="toggle-eye" data-target="confirmPassword"
+                        aria-label="Show password">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" id="register">Register Now</button>
+        </form>
+
+        <script>
+            /* =========================================================
+               1. PASSWORD POLICY
+               ========================================================= */
+            const RULES = [
+                { key: 'length',  test: v => v.length >= 8 && v.length <= 64 },
+                { key: 'lower',   test: v => /[a-z]/.test(v) },
+                { key: 'upper',   test: v => /[A-Z]/.test(v) },
+                { key: 'number',  test: v => /[0-9]/.test(v) },
+                { key: 'special', test: v => /[^A-Za-z0-9\s]/.test(v) },
+                { key: 'space',   test: v => v.length > 0 && !/\s/.test(v) }
+            ];
+
+            // Same rule as the backend guard — keep them in sync.
+            const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9\s])\S{8,64}$/;
+
+            const passwordInput = document.getElementById("password");
+            const confirmInput  = document.getElementById("confirmPassword");
+            const strengthFill  = document.getElementById("strengthFill");
+            const strengthLabel = document.getElementById("strengthLabel");
+            const rulesList     = document.getElementById("passwordRules");
+
+            /* ---------- Show / hide password ---------- */
+            document.querySelectorAll(".toggle-eye").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const input = document.getElementById(btn.dataset.target);
+                    const show = input.type === "password";
+                    input.type = show ? "text" : "password";
+                    btn.querySelector("i").className = show
+                        ? "fa-solid fa-eye-slash"
+                        : "fa-solid fa-eye";
+                    btn.setAttribute("aria-label", show ? "Hide password" : "Show password");
+                });
+            });
+
+            /* ---------- Live rule checking + strength meter ---------- */
+            function updatePasswordUI() {
+                const value = passwordInput.value;
+                let passed = 0;
+
+                RULES.forEach(rule => {
+                    const ok = rule.test(value);
+                    if (ok) passed++;
+
+                    const li = rulesList.querySelector(`li[data-rule="${rule.key}"]`);
+                    if (!li) return;
+
+                    const icon = li.querySelector("i");
+                    li.classList.toggle("valid", ok);
+                    li.classList.toggle("invalid", value.length > 0 && !ok);
+
+                    icon.className = ok
+                        ? "fa-solid fa-circle-check"
+                        : (value.length > 0 ? "fa-solid fa-circle-xmark" : "fa-regular fa-circle");
+                });
+
+                const total = RULES.length;
+                let percent = value ? (passed / total) * 100 : 0;
+                let label = "\u2014";
+                let color = "#94a3b8";
+
+                if (value) {
+                    if (passed <= 2)      { label = "Weak";   color = "#dc3545"; }
+                    else if (passed <= 4) { label = "Medium"; color = "#f59e0b"; }
+                    else if (passed === 5){ label = "Good";   color = "#eab308"; }
+                    else                  { label = "Strong"; color = "#16a34a"; }
+                }
+
+                strengthFill.style.width = percent + "%";
+                strengthFill.style.backgroundColor = color;
+                strengthLabel.textContent = label;
+                strengthLabel.style.color = color;
+            }
+
+            /* ---------- Confirm password match ---------- */
+            function updateMatchUI() {
+                const filled = confirmInput.value.length > 0;
+                const match  = filled && confirmInput.value === passwordInput.value;
+
+                confirmInput.classList.toggle("input-ok", match);
+                confirmInput.classList.toggle("input-error", filled && !match);
+            }
+
+            passwordInput.addEventListener("input", () => {
+                updatePasswordUI();
+                if (confirmInput.value) updateMatchUI();
+            });
+            confirmInput.addEventListener("input", updateMatchUI);
+            updatePasswordUI();
+
+            /* =========================================================
+               2. SUBMIT
+               ========================================================= */
+            document.getElementById("registerForm").addEventListener("submit", async function (event) {
+                event.preventDefault();
+
+                const name            = document.getElementById("name").value.trim();
+                const email           = document.getElementById("email").value.trim();
+                const phone           = document.getElementById("mobile").value.trim();
+                const rollNo          = document.getElementById("rollno").value.trim();
+                const course          = document.getElementById("course").value.trim();
+                const password        = passwordInput.value;
+                const confirmPassword = confirmInput.value;
+                const submitBtn       = document.getElementById("register");
+
+                /* ---- Password strength check ---- */
+                if (!PASSWORD_REGEX.test(password)) {
+                    showToast(
+                        "Password is too weak. It must be 8–64 characters and include uppercase, lowercase, a number, and a special character (no spaces).",
+                        "error"
+                    );
+                    passwordInput.focus();
+                    return;
+                }
+
+                /* ---- Match check ---- */
+                if (password !== confirmPassword) {
+                    showToast("Passwords do not match!", "error");
+                    confirmInput.focus();
+                    return;
+                }
+
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = "Registering...";
+                submitBtn.disabled = true;
+
+                try {
+                    const response = await fetch("http://localhost:5000/api/auth/register", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ name, email, phone, rollNo, course, password })
+                    });
+                    const data = await response.json();
+                    if (response.ok) {
+                        showToast("Registration Successful!", "success");
+                        window.location.href = "login.html";
+                    } else {
+                        showToast(data.message || "Registration failed.", "error");
+                    }
+                } catch (error) {
+                    console.error(error);
+                    showToast("Server error. Is your Node backend running?", "error");
+                } finally {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
+        </script>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #fafbfc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 35px;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 31, 63, 0.1);
+    box-shadow: 0 12px 35px rgba(0, 31, 63, 0.12);
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 800;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+/* Attractive underline */
+h1::after {
+    content: "";
+    display: block;
+    width: 85px;
+    height: 4px;
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+    margin: 10px auto 0;
+    border-radius: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+label {
+    display: block;
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+label span {
+    color: #999;
+    font-size: 13px;
+    font-weight: normal;
+}
+
+/* Upload Box */
+.upload-box {
+    position: relative;
+    width: 100%;
+    height: 190px;
+    border: 2px dashed #b9c2d0;
+    border-radius: 14px;
+    background: rgba(250, 251, 252, 0.85);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.upload-box:hover {
+    border-color: #4f46e5;
+    background: #f5f5ff;
+}
+
+.upload-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.upload-box p {
+    color: #444;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.upload-text {
+    color: #999;
+    font-size: 13px;
+}
+
+.upload-box input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Category dropdown styling */
+select {
+    width: 100%;
+    height: 38px;
+    padding: 8px 12px;
+    border: 1px solid #cfd6e4;
+    border-radius: 10px;
+    background-color: #fff;
+    font-size: 15px;
+    color: #333;
+    outline: none;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+/* Dropdown focus effect */
+select:focus {
+    border-color: #8b9dc3;
+    box-shadow: 0 0 4px rgba(139, 157, 195, 0.3);
+}
+
+/* Input, Date, Time and Textarea */
+input[type="text"],
+input[type="date"],
+input[type="time"],
+textarea {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #d5d9e0;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+    background: white;
+    transition: 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+textarea:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: #4f46e5;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #3730a3;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+
+    .form-container {
+        padding: 25px 20px;
+    }
+
+    h1 {
+        font-size: 27px;
+    }
+}
+
+.required {
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Dark Mode specific overrides for Lost */
+[data-theme="dark"] .form-container {
+    background: #1e293b !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+[data-theme="dark"] h1 { color: #f8fafc !important; }
+[data-theme="dark"] h1::after { background: linear-gradient(90deg, #ffcc00, #d8b529); }
+[data-theme="dark"] label { color: #e2e8f0 !important; }
+[data-theme="dark"] .subtitle { color: #94a3b8 !important; }
+[data-theme="dark"] .upload-box { background: #0f172a !important; border-color: #475569 !important; }
+[data-theme="dark"] .upload-box p { color: #e2e8f0 !important; }
+[data-theme="dark"] .upload-box .upload-text { color: #94a3b8 !important; }
+[data-theme="dark"] input[type="text"], 
+[data-theme="dark"] input[type="date"], 
+[data-theme="dark"] input[type="time"], 
+[data-theme="dark"] select, 
+[data-theme="dark"] textarea {
+    background: #0f172a !important;
+    color: #ffffff !important;
+    border-color: #475569 !important;
+}

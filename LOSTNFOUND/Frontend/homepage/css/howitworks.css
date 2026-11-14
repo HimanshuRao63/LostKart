@@ -1,0 +1,206 @@
+/* =================================
+   HOW IT WORKS PAGE
+   ================================= */
+
+
+/* Import Font */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+
+/* Reset */
+
+* {
+    box-sizing: border-box;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* Body */
+
+body {
+    margin: 0;
+
+    padding: 0;
+
+    background-color: #f0f4f8;
+
+    color: #444;
+}
+
+
+/* =================================
+   HOW IT WORKS SECTION
+   ================================= */
+
+.how-it-works {
+    padding: 50px 7%;
+
+    text-align: center;
+}
+
+
+/* Main Heading */
+
+.how-it-works h1 {
+    color: #0056b3;
+
+    font-size: 30px;
+
+    font-weight: 600;
+
+    margin-bottom: 10px;
+}
+
+
+/* Introduction */
+
+.intro {
+    color: #666;
+
+    font-size: 15px;
+
+    margin-bottom: 35px;
+}
+
+
+/* =================================
+   STEPS CONTAINER
+   ================================= */
+
+.steps {
+    width: 90%;
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr;
+
+    gap: 25px;
+}
+
+
+/* =================================
+   STEP BOX
+   ================================= */
+
+.step-box {
+    background-color: white;
+
+    padding: 30px 25px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+    text-align: left;
+}
+
+
+/* =================================
+   NUMBER
+   ================================= */
+
+.number {
+    width: 50px;
+
+    height: 50px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background-color: #0056b3;
+
+    color: white;
+
+    border-radius: 10px;
+
+    font-size: 22px;
+
+    font-weight: 600;
+
+    margin-bottom: 20px;
+}
+
+
+/* =================================
+   STEP HEADING
+   ================================= */
+
+.step-box h2 {
+    color: #0056b3;
+
+    font-size: 20px;
+
+    margin-bottom: 10px;
+}
+
+
+/* =================================
+   STEP DESCRIPTION
+   ================================= */
+
+.step-box p {
+    color: #666;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    margin: 0;
+}
+
+
+/* =================================
+   HOVER
+   ================================= */
+
+.step-box:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =================================
+   MOBILE
+   ================================= */
+
+@media (max-width: 700px) {
+
+    .how-it-works {
+        padding: 40px 5%;
+    }
+
+
+    .how-it-works h1 {
+        font-size: 25px;
+    }
+
+
+    .intro {
+        font-size: 14px;
+    }
+
+
+    .steps {
+        width: 100%;
+
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+
+    .step-box {
+        padding: 25px 20px;
+    }
+
+}

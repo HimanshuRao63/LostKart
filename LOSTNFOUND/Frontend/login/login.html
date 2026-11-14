@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="../homepage/js/theme.js"></script>
+    <script src="../homepage/js/toast.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - LO$TKART</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../homepage/css/theme-utils.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Coiny&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="fullpage">
+        
+        <!-- Toggle inside the container -->
+        <div class="page-controls" style="justify-content: flex-end;">
+            <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+
+        <div class="flash">Find what you have just lost!!!</div>
+        <div class="logo"><a href="#uid"><img src="../Images/logo.jpg" alt="logo"></a></div>
+        
+        <form class="login" id="loginForm">
+            <label for="uid">Username/Email:</label><br>
+            <input id="uid" type="text" required><br>
+
+            <label for="pass">Password:</label><br>
+            <div class="password-container">
+                <input id="pass" type="password" required>
+                <button type="button" id="togglePassword"><i class="fa-solid fa-eye-slash"></i></button>
+            </div>
+            <br>
+            <div id="logdiv"><button type="submit" id="logbtn">Login</button></div>
+        </form>
+        
+        <div class="register">New user? <a href="register.html">Register Now</a></div>
+    </div>
+
+    <script src="login.js"></script>
+    <script>
+        const password = document.getElementById("pass");
+        const togglePassword = document.getElementById("togglePassword");
+        if (togglePassword) {
+            togglePassword.addEventListener("click", function () {
+                if (password.type === "password") {
+                    password.type = "text";
+                    togglePassword.innerHTML = '<i class="fa-solid fa-eye"></i>';
+                } else {
+                    password.type = "password";
+                    togglePassword.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
