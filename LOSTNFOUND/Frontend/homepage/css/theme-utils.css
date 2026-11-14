@@ -44,7 +44,7 @@ body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background-image: url("/Frontend/Images/bg.jpg");
+    background-image: url("/Images/bg.jpg");
     background-position: center;
     background-repeat: repeat;
     background-size: 400px;
